@@ -1,38 +1,29 @@
-'use client'
+import { Inter } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
+import Navbar from '../src/components/Navbar';
+import Footer from '../src/components/Footer';
+import '../src/styles/globals.css';
 
-import { usePathname } from 'next/navigation'
-import { Inter } from 'next/font/google'
-import { Toaster } from 'react-hot-toast'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import '@/styles/globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Mews Media Admin Panel',
-  description: 'Admin dashboard for Mews Media operations and content control.',
-}
+  title: 'Mews Media - Digital Marketing & Creative Agency in Nepal',
+  description: 'Your trusted partner for digital marketing, web development, and creative services in Nepal.',
+};
 
-export default function AdminLayout({
+export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const pathname = usePathname() ?? '' // ✅ Fix here: fallback to empty string
-
-  if (!pathname.startsWith('/admin/login')) {
-    // future auth check goes here
-  }
-
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen bg-white`}>
+      <body className={`${inter.className} min-h-screen bg-gray-50`}>
         <Toaster position="top-right" />
         <Navbar />
         <main>{children}</main>
         <Footer />
       </body>
     </html>
-  )
+  );
 }
