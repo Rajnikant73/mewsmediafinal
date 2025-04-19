@@ -7,7 +7,8 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
+  // Fallback to empty string if usePathname() returns null
+  const pathname = usePathname() ?? '';
 
   if (!pathname.startsWith('/admin/login')) {
     // Add authentication check here
